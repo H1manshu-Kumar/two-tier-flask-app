@@ -1,3 +1,5 @@
+@Library('jenkins-shared-libraries') _
+
 pipeline{
     
     agent {label "dev"};
@@ -5,7 +7,9 @@ pipeline{
     stages{
         stage("Code Clone"){
             steps{
-                git url: "https://github.com/H1manshu-Kumar/two-tier-flask-app", branch: "master"
+                script{
+                    gitClone("https://github.com/H1manshu-Kumar/two-tier-flask-app", "master")
+                }                
             }
         }
 
